@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+
+    /* Strict Type Checking */
+    "strict": true,
+    "noImplicitAny": true,
+
+    /* Module resolution */
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "esModuleInterop": true,
+
+    /*  Advanced */
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["src/@types", "node_modules/@types"]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": ["src"]
+}

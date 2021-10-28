@@ -1,0 +1,25 @@
+.CatsList {
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+}
+
+.CatsList-Table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.CatsList-Table td,th {
+    border: 1px solid lightgray;
+    border-spacing: 0.5rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.CatsList-Table-Header {
+    background-color: #61dafb;
+}
+
+.CatsList-Group-Header {
+    text-align: left;
+}
