@@ -3,7 +3,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import swig from 'swig';
+import consolidate from 'consolidate';
 
 export interface IHash {
   [details: string]: express.Router;
@@ -11,12 +11,8 @@ export interface IHash {
 
 import indexRouter from './routes';
 
-function dynamicRoute(m: string) {
-  return async function routeHandler(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
+function lazyLoadRoute(m: string) {
+  return async function routeHandler(request: Request, response: Response, next: NextFunction) {
     const { default: router } = await import(m);
     router(request, response, next);
   };
@@ -26,23 +22,20 @@ function dynamicRoute(m: string) {
 const app = express();
 
 // view engine setup
-app.engine('html', swig.renderFile);
+app.engine('html', consolidate.swig);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.set('view cache', true);
-swig.setDefaults({ cache: false });
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-console.log(
-  'Serving static files from :' + path.join(__dirname, '../../public')
-);
+console.log('Serving static files from :' + path.join(__dirname, '../../public'));
 app.use(express.static(path.join(__dirname, '../../public')));
 
 app.use('/', indexRouter);
-app.use('/cats', dynamicRoute('./routes/cats'));
+app.use('/cats', lazyLoadRoute('./routes/cats'));
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {

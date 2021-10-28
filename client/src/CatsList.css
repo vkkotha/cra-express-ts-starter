@@ -1,7 +1,6 @@
 .CatsList {
     margin: auto;
-    width: 70%;
-    padding: 10px;
+    width: 50%;
 }
 
 .CatsList-Table {
@@ -11,8 +10,8 @@
 
 .CatsList-Table td,th {
     border: 1px solid lightgray;
-    border-spacing: 0.5rem;
     border-collapse: collapse;
+    padding: 0.4rem;
     text-align: left;
 }
 
@@ -20,6 +19,6 @@
     background-color: #61dafb;
 }
 
-.CatsList-Group-Header {
+.CatsList-Section-Header {
     text-align: left;
 }

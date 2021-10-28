@@ -38,8 +38,7 @@ function onError(error: { syscall: string; code: any }): void {
     throw error;
   }
 
-  const bind =
-    typeof port === 'string' ? `Pipe ${String(port)})` : `Port ${String(port)}`;
+  const bind = typeof port === 'string' ? `Pipe ${String(port)})` : `Port ${String(port)}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {

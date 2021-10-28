@@ -52,15 +52,15 @@ class CatsList extends React.Component<IProps, IState> {
   render(): ReactElement {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div className="CatsList">Error: {error.message}</div>;
+      return <div className='CatsList'>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div className="CatsList">Loading ...</div>;
+      return <div className='CatsList'>Loading ...</div>;
     } else {
       return (
-        <div className="CatsList">
-          <h2 className="CatsList-Group-Header">Cats</h2>
-          <table className="CatsList-Table">
-            <thead className="CatsList-Table-Header">
+        <div className='CatsList'>
+          <h2 className='CatsList-Section-Header'>Cats</h2>
+          <table className='CatsList-Table'>
+            <thead className='CatsList-Table-Header'>
               <tr>
                 <th>Id</th>
                 <th>Name</th>

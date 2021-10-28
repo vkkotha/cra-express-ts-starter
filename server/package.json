@@ -2,11 +2,14 @@
   "name": "server",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "start": "nodemon",
-    "lint": "eslint ./ --ext .ts,.js,.json",
+    "lint": "eslint './**/*.{ts,tsx,js,jsx}'",
     "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css dist/",
-    "build": "tsc && npm run copy-files",
+    "build": "npm run lint && tsc && npm run copy-files",
     "clean": "rimraf dist/",
     "test": "npm run test -- --watchAll",
     "serve": "node dist/server.js"
@@ -14,12 +17,11 @@
   "eslintConfig": {
     "env": {
       "node": true,
-      "es6": true,
+      "es2017": true,
       "jest": true
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 2017,
       "sourceType": "module"
     },
     "extends": [
@@ -30,41 +32,40 @@
       "prettier"
     ],
     "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true,
-          "semi": true
-        }
-      ]
+      "prettier/prettier": "error"
     },
     "ignorePatterns": [
-      "/dist/**"
+      "build/**",
+      "dist/**",
+      "node_modules/**"
     ]
   },
   "prettier": {
     "singleQuote": true,
     "semi": true,
-    "tabWidth": 2
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100
   },
   "dependencies": {
+    "consolidate": "^0.16.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",
-    "swig": "^1.4.2"
+    "swig-templates": "^2.0.3"
   },
   "devDependencies": {
+    "@types/consolidate": "^0.14.1",
     "@types/cookie-parser": "^1.4.2",
     "@types/express": "^4.17.13",
     "@types/http-errors": "^1.8.1",
     "@types/jade": "^0.0.30",
     "@types/morgan": "^1.9.3",
-    "@types/swig": "^0.0.30",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "@typescript-eslint/parser": "^5.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "copyfiles": "^2.4.1",
-    "eslint": "^8.1.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.14",
