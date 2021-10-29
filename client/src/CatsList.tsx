@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
 import './CatsList.css';
 
-interface IProps {}
-
 interface IState {
   error?: Error;
   isLoaded: boolean;
@@ -15,8 +13,12 @@ type Cat = {
   size: string;
 };
 
-class CatsList extends React.Component<IProps, IState> {
-  constructor(props: any) {
+type CatsResponse = {
+  data: Array<Cat>;
+};
+
+class CatsList extends React.Component<Record<string, unknown>, IState> {
+  constructor(props: Record<string, unknown>) {
     super(props);
     this.state = {
       isLoaded: false,
@@ -24,10 +26,10 @@ class CatsList extends React.Component<IProps, IState> {
     };
   }
 
-  async componentDidMount() {
+  async componentDidMount(): Promise<void> {
     try {
       const res = await fetch('/cats');
-      const result = await res.json();
+      const result: CatsResponse = (await res.json()) as CatsResponse;
       const cats: Cat[] = result.data;
       this.setState({
         isLoaded: true,
@@ -39,14 +41,7 @@ class CatsList extends React.Component<IProps, IState> {
         error: e as Error,
       });
     }
-    fetch('/cats')
-      .then((res) => res.json())
-      .then(
-        (payload) => console.log(payload.data),
-        (err) => {
-          console.log(err);
-        }
-      );
+    return;
   }
 
   render(): ReactElement {

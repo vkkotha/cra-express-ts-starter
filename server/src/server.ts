@@ -1,5 +1,6 @@
-import app from './api/app';
 import http from 'http';
+
+import app from './api/app';
 
 const _envPort = process.env.PORT || '9000';
 
@@ -33,7 +34,7 @@ function normalizePort(val: string) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error: { syscall: string; code: any }): void {
+function onError(error: { syscall: string; code: unknown }): void {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -61,11 +62,7 @@ function onError(error: { syscall: string; code: any }): void {
 
 function onListening(): void {
   const addr = server.address();
-  const bind = addr
-    ? typeof addr === 'string'
-      ? 'pipe ' + addr
-      : `port ${addr.address} : ${addr.port}`
-    : '';
+  const bind = addr ? (typeof addr === 'string' ? 'pipe ' + addr : `port ${addr.address} : ${addr.port}`) : '';
   console.log(`Server Listening on ${bind}`);
 }
 

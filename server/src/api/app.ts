@@ -3,26 +3,18 @@ import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import consolidate from 'consolidate';
-
-export interface IHash {
-  [details: string]: express.Router;
-}
+import cons from 'consolidate';
 
 import indexRouter from './routes';
+import catsRouter from './routes/cats';
 
-function lazyLoadRoute(m: string) {
-  return async function routeHandler(request: Request, response: Response, next: NextFunction) {
-    const { default: router } = await import(m);
-    router(request, response, next);
-  };
-}
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Create Express server
 const app = express();
 
 // view engine setup
-app.engine('html', consolidate.swig);
+app.engine('html', cons.swig);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.set('view cache', true);
@@ -35,7 +27,7 @@ console.log('Serving static files from :' + path.join(__dirname, '../../public')
 app.use(express.static(path.join(__dirname, '../../public')));
 
 app.use('/', indexRouter);
-app.use('/cats', lazyLoadRoute('./routes/cats'));
+app.use('/cats', catsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {

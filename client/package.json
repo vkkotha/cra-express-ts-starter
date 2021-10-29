@@ -31,7 +31,6 @@
     "env": {
       "browser": true,
       "node": true,
-      "es2017": true,
       "jest": true
     },
     "parser": "@typescript-eslint/parser",
@@ -45,14 +44,40 @@
       "react-app",
       "react-app/jest",
       "eslint:recommended",
-      "prettier"
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:prettier/recommended"
     ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "plugins": [
-      "react",
-      "prettier"
+      "react"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "parserOptions": {
+          "project": [
+            "./tsconfig.json"
+          ]
+        }
+      }
     ],
     "rules": {
-      "prettier/prettier": "error"
+      "@typescript-eslint/no-unsafe-assignment": "warn",
+      "@typescript-eslint/no-unsafe-call": "warn",
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          "checksVoidReturn": false
+        }
+      ]
     },
     "ignorePatterns": [
       "build/**",
@@ -65,8 +90,7 @@
     "semi": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "parser": "typescript",
-    "printWidth": 100,
+    "printWidth": 120,
     "jsxSingleQuote": true
   },
   "proxy": "http://localhost:9000",
