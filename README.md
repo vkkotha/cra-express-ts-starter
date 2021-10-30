@@ -146,5 +146,7 @@ Here is [ECMA Reference](https://en.wikipedia.org/wiki/ECMAScript)
 - Setting up with [React Native](https://reactnative.dev/) framework.
 - Deploy Client app on mobile devices. 
 
+## References
+- A quick FE app generator [createapp.dev](https://createapp.dev/webpack/no-library)
 ## License
 [MIT License](https://github.com/vkkotha/cra-express-ts-starter/blob/master/LICENSE).
