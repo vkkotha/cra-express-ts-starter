@@ -1,7 +1,9 @@
 .idea
+.cache
 *.iml
 .DS_Store
 dist
 bin
 build
 logs
+node_modules

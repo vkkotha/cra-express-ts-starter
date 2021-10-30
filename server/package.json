@@ -1,8 +1,10 @@
 {
   "name": "server",
   "version": "0.1.0",
+  "description": "Client App",
+  "author": "vkkotha",
+  "license": "ISC",
   "private": true,
-  "type": "module",
   "engines": {
     "node": ">=16"
   },

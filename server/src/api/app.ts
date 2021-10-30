@@ -8,7 +8,7 @@ import cons from 'consolidate';
 import indexRouter from './routes';
 import catsRouter from './routes/cats';
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Create Express server
 const app = express();

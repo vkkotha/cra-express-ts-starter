@@ -1,6 +1,9 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "description": "Client App",
+  "author": "vkkotha",
+  "license": "ISC",
   "private": true,
   "engines": {
     "node": ">=16"
