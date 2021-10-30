@@ -148,5 +148,8 @@ Here is [ECMA Reference](https://en.wikipedia.org/wiki/ECMAScript)
 
 ## References
 - A quick FE app generator [createapp.dev](https://createapp.dev/webpack/no-library)
+- [Create React APP](https://create-react-app.dev/)
+- [Express App generator](https://expressjs.com/en/starter/generator.html)
+
 ## License
 [MIT License](https://github.com/vkkotha/cra-express-ts-starter/blob/master/LICENSE).
