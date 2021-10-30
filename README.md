@@ -1,5 +1,6 @@
 # CRA-Express-Typescript-Starter
-![node-current](https://img.shields.io/node/v/cra-express-ts-starter)
+![node](http://img.shields.io/badge/node-16+-brightgreen.svg)
+![npm](http://img.shields.io/badge/npm-8+-orange.svg)
 
 A starter project for Create React App/Express Project with Typescript.
 Uses Typescript for both client and server side programming.
