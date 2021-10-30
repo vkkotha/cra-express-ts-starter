@@ -111,7 +111,7 @@ Do not install packages without workspace name.
 |6|es2015|classes, import|v8,v10|
 |7|es2016|block scoping, await/async keywords, math **|v12|
 |8|es2017|async/await, atomics, Object.values|v14|
-|9|es2018|v16|spread operator, rest parms, aysnc iteraion, promise.finally|
+|9|es2018|spread operator, rest params, async iteration, promise.finally|v16|
 
 Here is [ECMA Reference](https://en.wikipedia.org/wiki/ECMAScript)
 <br/>Here is the [Compatabilty Matrix](https://kangax.github.io/compat-table/es2016plus/)
