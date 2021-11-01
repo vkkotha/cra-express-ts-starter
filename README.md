@@ -5,6 +5,9 @@
 A starter project for Create React App/Express Project with Typescript.
 Uses Typescript for both client and server side programming.
 
+> Refer to [jsapp-starter](https://www.npmjs.com/package/jsapp-starter) which will help you setup you own project using this projects structure.
+> With that you can just run `npx jsapp-starter create-app my-app` to Kick start your project.
+
 This one has better client/server separation, where both are treated as separate code bases in thier own folders and are treated as separate node projects.
 Using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) you can share node_modules and run npm scripts from root directory.
 
