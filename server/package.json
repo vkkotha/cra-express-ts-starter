@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "nodemon",
-    "lint": "eslint './**/*.{ts,tsx,js,jsx}'",
+    "lint": "eslint .",
     "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css dist/",
     "build": "npm run lint && tsc && npm run copy-files",
     "clean": "rimraf dist/",
