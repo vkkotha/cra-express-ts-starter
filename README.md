@@ -39,6 +39,9 @@ If you need both client/server managed as single node project, then look into [r
 - Express server app accesslogs with [morgan](https://www.npmjs.com/package/morgan)
 - Sensible minimal .gitingore, eslint, prettier configs.
 - npm workspaces to share node_modules
+- Client and Server environment configurations.
+- Development in Proxy mode where Client and Server deployed separately
+- Development in Server mode where Server serves Client application files.
 
 ## Usage
 - Clone the repository.
@@ -62,8 +65,9 @@ $ npm start --workspace=server
 $ npm run build --workspace=server
 ```
 - To build client for production, that deploys on a specific domain
+  <br/>Setup proper .env.production configuration file and run
 ```shell script
-$ PUBLIC_URL=https:<domain>/<path> npm run build --workspace=server
+$ npm run build --workspace=server
 ```
 
 - To build server for production run
@@ -76,7 +80,36 @@ $ npm run build --workspace=server
 ```shell script
 $ npm i <package> -w <workspace>
 ```
-Do not install packages without workspace name.
+>NOTE: Do not install packages without workspace name.
+
+#### Development with Proxy Mode
+- Here you run client with react-scripts webpack server and all the Api calls get proxied to SERVER_URL
+- Start server by running `npm start --workspace=server`
+- Configure `client/.env.development` and set
+```
+PORT=3000
+PUBLIC_URL=
+REACT_APP_USE_PROXY=true
+REACT_APP_SERVER_URL=http://localhost:9000
+```
+- Start Client by running `npm start --workspace=client`
+- Access application on default location [http://localhost:3000](http://localhost:3000)
+
+#### Development in Server Mode
+- Here you build the client application on a watch, and server serves the Client applicaton from build folder
+- Configure `server/.env.development` and set
+```
+PUBLIC_PATH=../client/build
+```
+- Start server by running `npm start --workspace=server`
+- Configure `client/.env.development` and set
+```
+PUBLIC_URL=http://localhost:9000
+REACT_APP_USE_PROXY=false
+REACT_APP_SERVER_URL=
+```
+- Start watch on client builds by running `npm run watch:dev:build --workspace=client`
+- Access application on server's location [http://localhost:9000](http://localhost:9000)
 
 ## Using in your own project
 - Search and Replace 'cra-express-ts-starter' with your own project name.

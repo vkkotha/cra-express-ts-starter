@@ -9,13 +9,13 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "NODE_ENV=development nodemon",
     "lint": "eslint .",
     "copy-files": "copyfiles -u 1 src/**/*.html src/**/*.css dist/",
     "build": "npm run lint && tsc && npm run copy-files",
     "clean": "rimraf dist/",
-    "test": "npm run test -- --watchAll",
-    "serve": "node --es-module-specifier-resolution=node ./dist/server.js"
+    "test": "NODE_ENV=test npm run test -- --watchAll",
+    "serve": "NODE_ENV=production node ./dist/server.js"
   },
   "eslintConfig": {
     "env": {
@@ -69,11 +69,15 @@
     "semi": true,
     "tabWidth": 2,
     "trailingComma": "es5",
-    "printWidth": 120
+    "printWidth": 120,
+    "endOfLine": "auto"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "consolidate": "^0.16.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",
     "morgan": "^1.10.0",

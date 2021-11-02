@@ -1,34 +1,15 @@
 import http from 'http';
 
+import config from './config';
 import app from './api/app';
 
-const _envPort = process.env.PORT || '9000';
-
-const port = normalizePort(_envPort);
-
-app.set('port', port);
+app.set('port', config.PORT);
 
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(config.PORT);
 server.on('error', onError);
 server.on('listening', onListening);
-
-function normalizePort(val: string) {
-  const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
@@ -39,16 +20,14 @@ function onError(error: { syscall: string; code: unknown }): void {
     throw error;
   }
 
-  const bind = typeof port === 'string' ? `Pipe ${String(port)})` : `Port ${String(port)}`;
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error(`${config.PORT} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error(`${config.PORT} is already in use`);
       process.exit(1);
       break;
     default:

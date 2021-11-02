@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+
+import Utils from './Utils';
 import './CatsList.css';
 
 interface IState {
@@ -28,7 +30,7 @@ class CatsList extends React.Component<Record<string, unknown>, IState> {
 
   async componentDidMount(): Promise<void> {
     try {
-      const res = await fetch('/cats');
+      const res = await fetch(Utils.serverUrl('/api/cats'));
       const result: CatsResponse = (await res.json()) as CatsResponse;
       const cats: Cat[] = result.data;
       this.setState({
