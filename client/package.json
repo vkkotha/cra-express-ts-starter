@@ -30,9 +30,12 @@
   "watch": {
     "dev:build": {
       "patterns": [
-        "."
+        "src",
+        "public",
+        ".env*",
+        "package.json"
       ],
-      "ignore": "build",
+      "ignore": ["build", "node_modules", "package-lock.json"],
       "extensions": "*",
       "quiet": false
     }
