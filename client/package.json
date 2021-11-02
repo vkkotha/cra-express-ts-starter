@@ -32,7 +32,6 @@
       "patterns": [
         "src",
         "public",
-        ".env*",
         "package.json"
       ],
       "ignore": ["build", "node_modules", "package-lock.json"],
